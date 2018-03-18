@@ -54,17 +54,17 @@ public class Biblioteca {
     Método que devuelva los libros con un
     titulo entre 8 y 15 caracteres.
     */
-    public String devolverTituloEntre8Y15 (){
-        String mensaje="";
+    public ArrayList<Libro> devolverTituloEntre8Y15 (){
+        ArrayList<Libro> librosEntr8Y15 = new ArrayList<>();
         for (Libro libro : libros){
-            if (libro.nombre.length() >8 && libro.nombre.length()< 15){
-                mensaje+= libro + "\n";
+            if (libro.nombre.length() >=8 && libro.nombre.length() <=15){
+                librosEntr8Y15.add(libro);
             }
         }
-        if (mensaje == ""){
-            mensaje+= "No se han encontrado libros con esa característica";
+        if (librosEntr8Y15.isEmpty()){
+            return null;
         }
-        return mensaje;
+        return librosEntr8Y15;
     }
 
     // Método que compara si dos libros son el mismo
@@ -95,12 +95,7 @@ public class Biblioteca {
 
     @Override
     public String toString() {
-        String mensaje = "Biblioteca: " + nombre + "\n";
-
-        for (Libro libro : libros) {
-            mensaje+= libro + "\n";
-        }
-        return mensaje;
+        return nombre;
     }
 
 

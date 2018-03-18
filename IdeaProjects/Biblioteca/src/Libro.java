@@ -5,7 +5,7 @@ public class Libro {
     Fecha publicacion;
     Autor autor;
 
-    public Libro(String nombre, String genero, Fecha publicacion, Autor autor){
+    public Libro(String nombre, String genero, Autor autor, Fecha publicacion){
         this.nombre = nombre;
         this.genero = genero;
         this.publicacion = publicacion;
@@ -54,8 +54,6 @@ public class Libro {
     @Override
     public String toString() {
 
-        return "Nombre: " + nombre + ".\n" +
-                "Género: " + genero + ".\n" +
-                "Autor: " + autor + ".\n\n";
+        return nombre;
     }
 }
