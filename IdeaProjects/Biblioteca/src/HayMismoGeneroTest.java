@@ -70,7 +70,7 @@ class HayMismoGeneroTest {
     }
 
     /**
-     * Se comprueba el resultado de consultar una biblioteca con uel mismo libro
+     * Se comprueba el resultado de consultar una biblioteca con el mismo libro
      */
     @DisplayName("Test3: La biblioteca tiene el mismo libro")
     @Test
