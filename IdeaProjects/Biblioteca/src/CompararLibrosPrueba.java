@@ -2,7 +2,7 @@ import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CompararLibrosPrueba extends Contador{
+public class CompararLibrosPrueba{
 
 
     static Libro l1;
@@ -10,23 +10,18 @@ public class CompararLibrosPrueba extends Contador{
     static Libro l3;
     static Libro l4;
     static Libro l5;
+    static int contador = 0;
 
 
     @BeforeAll
     static void creacion() {
         Autor a1 = new Autor("Paco");
         Fecha f1 = new Fecha();
-        l1 = new Libro("Viva er Whiskey", "Comedia", f1,a1);
-        l2 = new Libro("Viva er Whiskey", "Comedia", f1,a1);
-        l3 = new Libro("Suspenso en Programacion", "Terror", f1,a1);
+        l1 = new Libro("Viva er Whiskey", "Comedia",a1, f1);
+        l2 = new Libro("Viva er Whiskey", "Comedia",a1, f1);
+        l3 = new Libro("Suspenso en Programacion", "Terror", a1, f1);
         l4 = null;
         l5 = l1;
-    }
-
-
-    @AfterEach
-    void afterEach() {
-        super.afterEach();
     }
 
     @AfterAll
@@ -36,6 +31,11 @@ public class CompararLibrosPrueba extends Contador{
         l3 = null;
         l4 = null;
         l5 = null;
+    }
+
+    @AfterEach
+    void contador (){
+        System.out.println( "Pruebas realizadas: " + ++contador + "\n");
     }
 
     @DisplayName("Prueba que comprueba si es falso el resultado.")
@@ -65,7 +65,7 @@ public class CompararLibrosPrueba extends Contador{
     }
 
 
-    @DisplayName("Prueba que compreuba si da correcto con un objeto que tiene la misma referencia.")
+    @DisplayName("Prueba que comprueba si da correcto con un objeto que tiene la misma referencia.")
     @Test
     void pruebaCinco(){
         assertTrue(l1.compararLibros(l5));

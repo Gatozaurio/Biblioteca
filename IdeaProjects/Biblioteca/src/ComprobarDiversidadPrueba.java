@@ -2,7 +2,7 @@ import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ComprobarDiversidadPrueba extends Contador{
+public class ComprobarDiversidadPrueba{
 
     static Autor a1;
     static Biblioteca b1;
@@ -19,6 +19,7 @@ public class ComprobarDiversidadPrueba extends Contador{
     static Libro l9;
     static Libro l10;
     static Libro l11;
+    static int contador = 0;
 
 
 
@@ -27,16 +28,16 @@ public class ComprobarDiversidadPrueba extends Contador{
     static void creacion() {
         a1 = new Autor("Pepe");
         Fecha f1 = new Fecha();
-        l1 = new Libro("Como suspender Aplicaciones Web","Historias de la vida", f1,a1);
-        l2 = new Libro("Desde Paris con Amor","Historia", f1,a1);
-        l3 = new Libro("Gato Gordo y la tajada mortal","Accion",f1,a1);
-        l4 = new Libro("Viejo Oeste","Vaqueros",f1,a1);
-        l5 = new Libro("¿Quien anda ahi?","Terror",f1,a1);
-        l6 = new Libro("100 dias en Africa","Drama",f1,a1);
-        l7 = new Libro("Suspenso improvisado de Programacion","Realidad", f1,a1);
-        l8 = new Libro("El violin","Musical",f1,a1);
-        l9 = new Libro("El cabesita dalea","Comedia",f1,a1);
-        l10 = new Libro("Como contratar un autobus", "Escolares",f1,a1);
+        l1 = new Libro("Como suspender Aplicaciones Web","Historias de la vida",a1, f1);
+        l2 = new Libro("Desde Paris con Amor","Historia",a1, f1);
+        l3 = new Libro("Gato Gordo y la tajada mortal","Accion",a1,f1);
+        l4 = new Libro("Viejo Oeste","Vaqueros",a1,f1);
+        l5 = new Libro("¿Quien anda ahi?","Terror",a1,f1);
+        l6 = new Libro("100 dias en Africa","Drama",a1,f1);
+        l7 = new Libro("Suspenso improvisado de Programacion","Realidad",a1, f1);
+        l8 = new Libro("El violin","Musical",a1,f1);
+        l9 = new Libro("El cabesita dalea","Comedia",a1,f1);
+        l10 = new Libro("Como contratar un autobus", "Escolares",a1,f1);
         l11 = l1;
         b1 = new Biblioteca("Pepe Reads");
         b2 = new Biblioteca("El templo de Sevoio");
@@ -72,12 +73,6 @@ public class ComprobarDiversidadPrueba extends Contador{
         b3.añadir(l11);
     }
 
-
-    @AfterEach
-    void afterEach() {
-        super.afterEach();
-    }
-
     @AfterAll
     static void nulear(){
         a1 = null;
@@ -95,6 +90,11 @@ public class ComprobarDiversidadPrueba extends Contador{
         l9 = null;
         l10 = null;
         l11 = null;
+    }
+
+    @AfterEach
+    void contador (){
+        System.out.println( "Pruebas realizadas: " + ++contador + "\n");
     }
 
     @DisplayName("Comprueba que tiene diversidad.")

@@ -15,14 +15,16 @@ public class Biblioteca {
 
     // Método que te devuelva todos los libros a partir de una fecha.
     public ArrayList<Libro> obtenerLibrosPorFecha(Fecha fecha) {
-        ArrayList<Libro> librosPublicados = new ArrayList<>();
-        for (Libro lib: libros){
-            if (lib.publicacion.after(fecha) || lib.publicacion.equals(fecha)){
-                librosPublicados.add(lib);
+        ArrayList<Libro> lanzamiento = new ArrayList<>();
+        for (Libro l: libros){
+            if (l.publicacion.before(fecha) || l.publicacion.equals(fecha)){
+                lanzamiento.add(l);
             }
         }
-        return librosPublicados;
+        return lanzamiento;
     }
+
+
 
     /*
     Método que te devuelva otro libro del mismo autor
@@ -72,21 +74,23 @@ public class Biblioteca {
     Método que indique si es una biblioteca con mucha diversidad:
     Se considera diversa si el hay 10 géneros de libros distinto.
      */
-    public boolean comprobarDiversidad(){
-        int contador = 0;
-        ArrayList<Libro> generosBiblioteca = new ArrayList<>();
-        for (int i=0;i< libros.size(); i++){
-            for (int j=0;i< libros.size(); i++){
-                if (!libros.get(i).genero.equals(libros.get(j).genero) && !generosBiblioteca.contains(libros.get(j))){
-                    contador ++;
-                    generosBiblioteca.add(libros.get(j));
+    public boolean comprobarDiversidad() {
+        int count = 0;
+        ArrayList<Libro> genericos = new ArrayList<>();
+        Libro aux;
+        for (int i = 0; i < libros.size(); i++) {
+            for (int a = 0; a < libros.size(); a++) {
+                if (!libros.get(i).genero.equals(libros.get(a).genero) && !genericos.contains(libros.get(a))) {
+                    count++;
+                    genericos.add(libros.get(a));
                 }
             }
         }
-        if (contador > 9){
+        if (count >= 10) {
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     @Override

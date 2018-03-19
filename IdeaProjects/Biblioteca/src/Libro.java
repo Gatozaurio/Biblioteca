@@ -34,19 +34,23 @@ public class Libro {
     a un libro te indique si es o no de ese género
     y si pertenece al autor.
     */
-    public void comprobarGeneroYAutor (String gen, String autor) {
-        if (genero.equals(gen) && autor.equals(autor)) {
-            System.out.println("Género: sí     Autor: sí");
+    public String comprobarGeneroYAutor (String gen, Autor aut) {
+        if (gen==null || aut == null){
+            return "Error - El genero o el autor no son validos";
         }
-        if (!genero.equals(gen) && autor.equals(autor)) {
-            System.out.println("Género: no      Autor: sí");
+        if (genero.equals(gen) && autor.equals(aut)) {
+            return "Género: sí     Autor: sí";
         }
-        if (genero.equals(gen) && !autor.equals(autor)) {
-            System.out.println("Género: sí     Autor: no");
+        if (!genero.equals(gen) && autor.equals(aut)) {
+            return "Género: no      Autor: sí";
         }
-        if (!genero.equals(gen) && !autor.equals(autor)) {
-            System.out.println("Género: no     Autor: no");
+        if (genero.equals(gen) && !autor.equals(aut)) {
+            return "Género: sí     Autor: no";
         }
+        if (!genero.equals(gen) && !autor.equals(aut)) {
+            return "Género: no     Autor: no";
+        }
+        return null;
     }
 
     // Método que calcula los años que lleva publicado un libro.
